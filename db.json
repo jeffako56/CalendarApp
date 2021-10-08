@@ -1,0 +1,16 @@
+{
+  "events": [
+    {
+      "title": "Pasko",
+      "status": "Pending",
+      "date": "2021-12-24",
+      "id": 1
+    },
+    {
+      "title": "Paksiw",
+      "status": "Done",
+      "date": "2021-11-01",
+      "id": 3
+    }
+  ]
+}
