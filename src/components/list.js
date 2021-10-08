@@ -15,6 +15,23 @@ export default function ListTailwind({ content }) {
   const [mdate, setMDate] = useState();
   const [mstatus, setMStatus] = useState();
 
+  let hasError = false;
+  if (!hasError && !mtitle) {
+    hasError = true;
+  }
+
+  if ((!hasError && !mdate) || (!hasError && mdate.length > 10)) {
+    hasError = true;
+  }
+
+  if (
+    (!hasError && !mstatus) ||
+    (!hasError && mstatus === "Choose Status") ||
+    (!hasError && mstatus.length === 0)
+  ) {
+    hasError = true;
+  }
+
   const selectHandler = useCallback(async (params) => {
     dispatch({ type: "events/setSelected", payload: params });
     console.log("meron ba", params);
@@ -138,6 +155,7 @@ export default function ListTailwind({ content }) {
                 </text>
               )}
               <select
+                value={mstatus}
                 className=" m-1 content-center truncate border-blue-200  w-3/4 rounded "
                 onChange={(e) => setMStatus(e.target.value)}
               >
@@ -145,9 +163,15 @@ export default function ListTailwind({ content }) {
                 <option>Pending</option>
                 <option>Done</option>
               </select>
+
               <button
+                disabled={hasError}
                 id="ok-btn"
-                className="px-4 py-2 mt-3 bg-blue-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-grey-600 bg-grey-600) focus:outline-none focus:ring-2 focus:ring-blue-700"
+                className={
+                  !hasError
+                    ? "px-4 py-2 mt-3 bg-blue-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-grey-600 bg-grey-600) focus:outline-none focus:ring-2 focus:ring-blue-700"
+                    : "px-4 py-2 mt-3 bg-gray-300 text-gray-400 text-base font-medium rounded-md w-full shadow-sm ) focus:outline-none  "
+                }
                 onClick={UpdateDataHandler}
               >
                 Update
