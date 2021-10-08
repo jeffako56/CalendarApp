@@ -15,18 +15,6 @@ export const events = {
   },
   effects: (dispatch) => ({
     async list({ refresh, ...payload } = {}) {
-      //   try {
-      //     // await verifyServices.sendEmailID( { email: email } );
-      //     axios.get("http://localhost:8000/events").then((response) => {
-      //       console.log(response.data);
-      //       // setEventsList(response.data);
-      //       this.updateState({ payload });
-      //     });
-      //   } catch (error) {
-      //     console.log("nasend na may error");
-      //     console.warn(error);
-      //     //   setStatus("Completed");
-      //   }
       try {
         this.updateState({
           refreshing: refresh,

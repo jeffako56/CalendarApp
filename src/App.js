@@ -6,12 +6,8 @@ import store from "./store";
 import { useSelector, useDispatch } from "react-redux";
 import Loading from "./components/loading";
 import ListTailwind from "./components/list";
-import { Link, Route, Switch } from "react-router-dom";
-import routeNav from "./components/router";
-import RouteNav from "./components/router";
 import HeaderTailwind from "./components/header";
 import ButtonAddTailwind from "./components/button";
-import ButtonSearchTailwind from "./components/buttonSearch";
 
 function App() {
   const { dispatch } = store;
@@ -89,12 +85,6 @@ function App() {
 
   return (
     <div className="container h-screen">
-      {/* <Link to="/home">Home</Link>
-      <Switch>
-        <Route exact path="/home">
-          <RouteNav />
-        </Route>
-      </Switch> */}
       <HeaderTailwind>CALENDAR APP</HeaderTailwind>
       {!isForm && (
         <ButtonAddTailwind
@@ -111,7 +101,6 @@ function App() {
           No Events Yet, Please Add Event
         </div>
       )}
-      {/* <ButtonFetchTailwind onClick={fetchAllData} /> */}
       {isForm && (
         <div>
           <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
@@ -153,7 +142,6 @@ function App() {
               <button
                 disabled={hasError}
                 id="ok-btn"
-                // className="px-4 py-2 mt-3 bg-blue-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-grey-600 bg-grey-600) focus:outline-none focus:ring-2 focus:ring-blue-700"
                 className={
                   !hasError
                     ? "px-4 py-2 mt-3 bg-blue-500 text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-grey-600 bg-grey-600) focus:outline-none focus:ring-2 focus:ring-blue-700"
@@ -176,46 +164,7 @@ function App() {
           </div>
         </div>
       )}
-      {/* <Modal isModal={isModal} selected={selected} /> */}
     </div>
-  );
-}
-
-// function HeaderTailwind(props) {
-//   return (
-//     <div className="flex flex-row pl-10 h-600 w-screen bg-blue-100 text-center font-semibold font-mono text-6xl p-5 ">
-//       <img
-//         className="justify-items-start pr-20"
-//         src={logo}
-//         alt="Logo"
-//         className="h-20 w-20"
-//       />
-//       <header className="pl-10 text-blue-800">{props.children}</header>
-//     </div>
-//   );
-// }
-
-// function ButtonAddTailwind({ onClick, isButton }) {
-//   return (
-//     isButton && (
-//       <button
-//         onClick={onClick}
-//         className="bg-blue-700 border-2 font-bold text-gray-200 px-4 py-2 absolute bottom-20 right-20 rounded-2xl"
-//       >
-//         ADD EVENT
-//       </button>
-//     )
-//   );
-// }
-
-function ButtonFetchTailwind({ onClick }) {
-  return (
-    <button
-      onClick={onClick}
-      className="bg-blue-800 border-2 font-bold text-gray-200 px-4 py-2 absolute bottom-20 right-20 rounded-2xl"
-    >
-      check data
-    </button>
   );
 }
 

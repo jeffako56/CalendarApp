@@ -12,4 +12,3 @@ export default function ButtonAddTailwind({ onClick, isButton, title }) {
     )
   );
 }
-// absolute top-0 left-0 flex items-center
