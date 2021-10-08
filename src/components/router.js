@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import App from "../App";
 import ListTailwind from "./list";
 import Search from "./search";
-import initialDetails from "../data/initialDetails";
 import SearchScreen from "./SearchScreen";
 
 export default function RouteNav() {
@@ -39,13 +38,20 @@ function Home() {
     <div className="h-screen w-screen">
       <HeaderTailwind>CALENDAR APP</HeaderTailwind>
       <div>
-        <h3 className={"font-extrabold font-sans text-5xl mx-auto p-4 w-full"}>
+        <h3
+          className={
+            "font-extrabold font-sans text-center text-5xl mx-auto p-4 w-full"
+          }
+        >
           Welcome to CALENDAR APPLICATION
         </h3>
-        <p className="p-4 px-8">
+        <p className="p-4 px-8 text-center">
           What are you waiting for? Schedule your upcoming events.
         </p>
-        <Link className={"absolute right-20 text-lg font-bold"} to="/events">
+        <Link
+          className={"absolute mt-10 right-20 text-lg font-bold"}
+          to="/events"
+        >
           <div>Continue &gt;</div>
         </Link>
       </div>

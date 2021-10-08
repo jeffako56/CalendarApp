@@ -92,7 +92,7 @@ export default function ListTailwind({ content }) {
                   setMStatus(item.status);
                 }}
               >
-                <div className="flex lg:m-2 lg:mx-auto sm:flex-col-reverse sm:justify-center lg:flex-row lg:w-full lg:items-start lg:items-center rounded lg:bg-white    shadow hover:shadow-xl z-10 sm:h-20 sm:bg-gray-200">
+                <div className="flex cursor-pointer lg:m-2 lg:mx-auto sm:flex-col-reverse sm:justify-center lg:flex-row lg:w-full lg:items-start lg:items-center rounded lg:bg-white    shadow hover:shadow-xl z-10 sm:h-20 sm:bg-gray-200">
                   <div className="flex flex-col justify-around w-full lg:w-1/3 lg:h-5 sm:h-20 dark:border-gray-700 lg:h-20 border-t lg:border-t-0 lg:border-r lg:border-l lg:rounded-r dark:bg-gray-700 sm:bg-white lg:bg-blue-50 hover:shadow">
                     <div className="lg:text-center lg:pt-3 h-1/2  lg:p-2 sm:text-center sm:h-4">
                       {item.date}

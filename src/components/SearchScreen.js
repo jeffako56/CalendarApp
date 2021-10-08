@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import initialDetails from "../data/initialDetails";
 import HeaderTailwind from "./header";
 import Search from "./search";
 import store from "../store";
