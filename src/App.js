@@ -8,10 +8,13 @@ import Loading from "./components/loading";
 import ListTailwind from "./components/list";
 import HeaderTailwind from "./components/header";
 import ButtonAddTailwind from "./components/button";
+import FilterButton from "./components/filter";
 
 function App() {
   const { dispatch } = store;
-  const { events } = useSelector((state) => state.events);
+  const { events, pendingList, doneList } = useSelector(
+    (state) => state.events
+  );
   const [eventsList, setEventsList] = useState();
   const [isForm, setIsForm] = useState(false);
   const [isModal, setIsModal] = useState();
@@ -19,10 +22,10 @@ function App() {
   const [date, setDate] = useState("");
   const [status, setStatus] = useState("");
   const [isloading, setLoading] = useState(false);
-  //   const [selected, setSelected] = useState();
+  const [isStatus, setIsStatus] = useState(false);
+  const [filteredStatus, setFilteredStatus] = useState("All");
 
   let hasError = false;
-  console.log("wowowow", hasError);
   if (!hasError && !title) {
     hasError = true;
   }
@@ -50,7 +53,12 @@ function App() {
     console.log([title, date, status]);
   }
 
+  const filteredData = useCallback(async () => {
+    dispatch({ type: "events/searchStatus" });
+  });
+
   useEffect(() => {
+    filteredData();
     fetchAllData();
   }, []);
 
@@ -73,9 +81,8 @@ function App() {
         });
       refreshList();
     } catch (error) {
-      console.log("nasend na may error");
+      console.log("error");
       console.warn(error);
-      //   setStatus("Completed");
     }
   });
 
@@ -87,14 +94,32 @@ function App() {
     <div className="container h-screen">
       <HeaderTailwind>CALENDAR APP</HeaderTailwind>
       {!isForm && (
-        <ButtonAddTailwind
-          onClick={showModal}
-          isButton={true}
-          title={"Add Event"}
-        ></ButtonAddTailwind>
+        <div
+          className={
+            "flex justify-end w-screen  sm:justify-center lg:justify-end sm:place-items-center"
+          }
+        >
+          <div className={"m-3.5 sm:mx-0"}>
+            <ButtonAddTailwind
+              onClick={showModal}
+              isButton={true}
+              title={"Add Event"}
+            />
+          </div>
+
+          <div className={"m-3.5 sm:mx-0 sm:top-0"}>
+            <FilterButton setFilteredStatus={setFilteredStatus} />
+          </div>
+        </div>
       )}
 
-      {!isForm && <ListTailwind content={events} />}
+      {!isForm && filteredStatus === "All" && <ListTailwind content={events} />}
+      {!isForm && filteredStatus === "Pending" && (
+        <ListTailwind content={pendingList} />
+      )}
+      {!isForm && filteredStatus === "Done" && (
+        <ListTailwind content={doneList} />
+      )}
 
       {!events.length && (
         <div className="pt-5 text-lg text-center">
@@ -102,8 +127,8 @@ function App() {
         </div>
       )}
       {isForm && (
-        <div>
-          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div className={" w-screen"}>
+          <div className="relative top-20 mx-auto p-5 border w-80 shadow-lg rounded-md">
             <div> Add Events</div>
             <div className="flex truncate flex-col justify-center items-center px-4 py-3">
               <input

@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import store from "../store";
 import Loading from "./loading";
+import FilterButton from "./filter";
 export default function ListTailwind({ content }) {
   const { dispatch } = store;
 
@@ -92,9 +93,9 @@ export default function ListTailwind({ content }) {
   }
 
   return (
-    <div>
+    <div className={"lg:w-screen"}>
       {!isModal && (
-        <ul className="lg:mt-20 lg:pb-10 ">
+        <ul className="lg:mt-10 lg:pb-10 ">
           {content.map((item, i) => (
             <>
               <div
@@ -128,8 +129,12 @@ export default function ListTailwind({ content }) {
         </ul>
       )}
       {isModal && (
-        <div>
-          <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
+        <div
+          className={
+            "flex w-screen  self-center justify-self-center justify-center"
+          }
+        >
+          <div className={"p-5 rounded-md shadow-lg w-80 border"}>
             <div> Update Events</div>
             <div className="flex truncate flex-col justify-center items-center px-4 py-3">
               <input

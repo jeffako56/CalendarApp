@@ -4,6 +4,8 @@ export const events = {
   state: {
     events: [],
     selected: [],
+    pendingList: [],
+    doneList: [],
 
     refreshing: false,
     isBusy: true,
@@ -35,6 +37,39 @@ export const events = {
           isBusy: false,
           refreshing: false,
         });
+      }
+    },
+
+    async searchStatus({ refresh, ...payload } = {}) {
+      try {
+        this.updateState({
+          refreshing: refresh,
+          isBusy: true,
+        });
+        const result = await axios
+          .get("http://localhost:8000/events?status=Pending")
+          .then((result) => {
+            this.updateState({
+              pendingList: result.data,
+              isBusy: false,
+              refreshing: false,
+            });
+          });
+
+        const resultdone = await axios
+          .get("http://localhost:8000/events?status=Done")
+          .then((resultdone) => {
+            this.updateState({
+              doneList: resultdone.data,
+              isBusy: false,
+              refreshing: false,
+            });
+          });
+
+        // refreshList();
+      } catch (error) {
+        console.log("error ano", error);
+        console.warn(error);
       }
     },
 
