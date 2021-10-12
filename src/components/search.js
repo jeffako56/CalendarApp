@@ -48,72 +48,9 @@ function Search({ details }) {
     );
   }
 
-  // function PendingList() {
-  //   return (
-  //     <Scroll>
-  //       <SearchList filteredEvents={pendingList} />
-  //     </Scroll>
-  //   );
-  // }
-
-  // function DoneList() {
-  //   return (
-  //     <Scroll>
-  //       <SearchList filteredEvents={doneList} />
-  //     </Scroll>
-  //   );
-  // }
-
   return (
     <section className=" mt-4 m-auto w-auto text-center">
-      <div className={"flex    "}>
-        {/* <div className={"absolute right-5  float-right"}> */}
-        {/* <button
-            className={" mr-5 p-2"}
-            onClick={() => {
-              setIsStatus(!isStatus);
-            }}
-          >
-            <FilterAltIcon fontSize="medium" className={"text-blue-400"} />
-          </button>
-
-          {isStatus && (
-            <div
-              className={
-                "flex flex-col justify-center content-center  bg-white float-left border-1 shadow"
-              }
-            >
-              <button
-                onClick={() => {
-                  setstatus("Default");
-                  setIsStatus(!isStatus);
-                }}
-                className={"text-left py-1 px-4"}
-              >
-                All
-              </button>
-              <button
-                onClick={() => {
-                  setstatus("Pending");
-                  setIsStatus(!isStatus);
-                }}
-                className={"text-left py-1 px-4"}
-              >
-                Pending
-              </button>
-              <button
-                onClick={() => {
-                  setstatus("Done");
-                  setIsStatus(!isStatus);
-                }}
-                className={"text-left py-1 px-4"}
-              >
-                Done
-              </button>
-            </div>
-          )}
-        </div> */}
-        <div>{/* <h2 className="text-lg">Search your Events</h2> */}</div>
+      <div className={"flex"}>
         <div className="relative p-2 mx-auto ">
           <SearchIcon fontSize="medium" />
           <input
@@ -125,8 +62,6 @@ function Search({ details }) {
         </div>
       </div>
       {ref.current === "Default" && searchList()}
-      {/* {ref.current === "Pending" && PendingList()}
-      {ref.current === "Done" && DoneList()} */}
     </section>
   );
 }

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 
 export default function FilterButton(params) {
-  // { isShowChoices, onClickFilter }
   const [isShowChoices, setisShowChoices] = useState(false);
 
   const handleChange = () => {
